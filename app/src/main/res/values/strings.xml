@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Assignment1</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_select_mode">SelectMode</string>
+    <string name="title_activity_single_player_mode">SinglePlayerMode</string>
+    <string name="title_activity_multi_player_mode">MultiPlayerMode</string>
+    <string name="title_activity_stat_mode">StatMode</string>
+</resources>

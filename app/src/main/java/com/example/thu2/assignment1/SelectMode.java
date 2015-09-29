@@ -1,5 +1,7 @@
 package com.example.thu2.assignment1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -18,12 +20,12 @@ public class SelectMode extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selectmodelayout);
-        SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
-        SinglePlayerButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                
-            }
-        });
+        //SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
+        //SinglePlayerButton.setOnClickListener(new View.OnClickListener(){
+            //public void onClick(View view){
+        //   //do it tomorrow
+        //    }
+        //});
     }
 
     @Override
@@ -50,6 +52,7 @@ public class SelectMode extends ActionBarActivity {
     public void SinglePlayerMode(View view){
         Intent GotoSinglePlayerMode = new Intent(SelectMode.this, SinglePlayerMode.class);
         startActivity(GotoSinglePlayerMode);
+
     }
     public void MultiPlayerMode(View view){
         Intent GotoMultiPlayerMode = new Intent(SelectMode.this, MultiPlayerMode.class);

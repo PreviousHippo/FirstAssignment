@@ -32,6 +32,18 @@
             android:name=".StatMode"
             android:label="@string/title_activity_stat_mode" >
         </activity>
+        <activity
+            android:name=".TwoPlayerMode"
+            android:label="@string/title_activity_two_player_mode" >
+        </activity>
+        <activity
+            android:name=".ThreePlayerMode"
+            android:label="@string/title_activity_three_player_mode" >
+        </activity>
+        <activity
+            android:name=".FourPlayerMode"
+            android:label="@string/title_activity_four_player_mode" >
+        </activity>
     </application>
 
 </manifest>

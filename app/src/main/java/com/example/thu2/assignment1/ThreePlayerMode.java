@@ -1,16 +1,72 @@
 package com.example.thu2.assignment1;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class ThreePlayerMode extends ActionBarActivity {
-
+public class ThreePlayerMode extends Activity {
+    Button FirstPlayerButton3;
+    Button SecondPlayerButton3;
+    Button ThirdPlayerButton3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.three_player_mode_activity);
+        FirstPlayerButton3 = (Button) findViewById(R.id.PlayerFirstButton);
+        FirstPlayerButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(ThreePlayerMode.this);
+                builder1.setMessage("First Player Won!!");
+                builder1.setCancelable(true);
+                builder1.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int readyId) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
+        });
+        SecondPlayerButton3 = (Button) findViewById(R.id.PlayerTwoButton);
+        SecondPlayerButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(ThreePlayerMode.this);
+                builder2.setMessage("Second Player Won");
+                builder2.setCancelable(true);
+                builder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int readyId) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert11 = builder2.create();
+                alert11.show();
+            }
+        });
+
+        ThirdPlayerButton3 = (Button) findViewById(R.id.PlayerThreeButton);
+        ThirdPlayerButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(ThreePlayerMode.this);
+                builder2.setMessage("Third Player Won");
+                builder2.setCancelable(true);
+                builder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int readyId) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert11 = builder2.create();
+                alert11.show();
+            }
+        });
     }
 
     @Override

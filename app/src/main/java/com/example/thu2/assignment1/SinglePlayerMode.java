@@ -3,16 +3,15 @@ package com.example.thu2.assignment1;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.Random;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class SinglePlayerMode extends Activity {
 
@@ -23,8 +22,10 @@ public class SinglePlayerMode extends Activity {
     int maxNum = 2000;
     int minNum = 10;
     int randomNum;
-   //Timer timer;
-    //double timerNum;
+    Timer timer;
+    long startTime;
+    long TimeDiff;
+    long latency;
 
 
     @Override
@@ -33,70 +34,74 @@ public class SinglePlayerMode extends Activity {
         setContentView(R.layout.single_player_mode_activity);
         SinglePlayerMessage = (TextView) findViewById(R.id.SinglePlayerModeText);
         rand = new Random();
-        randomNum = rand.nextInt((maxNum - minNum) +1) + minNum;
+        randomNum = rand.nextInt((maxNum - minNum) + 1) + minNum;
+
+        //dialog to reminder that the game start or not
         AlertDialog.Builder builder1 = new AlertDialog.Builder(SinglePlayerMode.this);
         builder1.setMessage("are you ready?");
         builder1.setCancelable(true);
         builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int readyId) {
-                //start timer 1 for random the time to start the game
-                //when u press the button in SinglePlayerMode, the timer2 start, then
-                //count the time in timer2
-
-                dialog.cancel();
+                //dialog.cancel()
+                startTime = System.currentTimeMillis();
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TimeDiff = System.currentTimeMillis() - startTime;
+                                if (TimeDiff >= (long) randomNum) {
+                                    SinglePlayerMessage.setText("Press the Button");
+                                }
+                            }
+                        });
+                    }
+                }, 0, 100);
+                SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
+                SinglePlayerButton.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        TimeDiff = System.currentTimeMillis() - startTime;
+                        if(TimeDiff < (long)randomNum){
+                            SinglePlayerMessage.setText("You Press too early");
+                        }
+                        else{
+                            latency = TimeDiff - randomNum;
+                            latency = (long)(latency/1000.0);
+                            //TimeList,getAllTime().add(latency);
+                            SinglePlayerMessage.setText("Your latency is "+ latency+"s");
+                        }
+                    }
+                });
             }
         });
         builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int readyId) {
+
+                Message = Integer.toString(100);
+                SinglePlayerMessage.setText(Message);
                 dialog.cancel();
             }
         });
         AlertDialog alert11 = builder1.create();
         alert11.show();
 
-        SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
-        //SinglePlayerMessage = (TextView) findViewById(R.id.SinglePlayerModeText);
-        //rand = new Random();
-        //randomNum = rand.nextInt((maxNum - minNum) +1) + minNum;
-        //Message = Integer.toString(randomNum);
-        SinglePlayerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //timer = new Timer();
-                //timerNum = timer
-                //if {
-                 //   timer1 < randomNum
-                //}
+        //SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
+        //SinglePlayerButton.setOnClickListener(new View.OnClickListener() {
+        //public void onClick(View view) {
+        //timer = new Timer();
+        //timerNum = timer
+        //if {
+        //   timer1 < randomNum
+        //}
 
-                //SinglePlayerMessage.setText(Message);
-
-
-            }
-
-        });
+        //SinglePlayerMessage.setText(Message);
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //});
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

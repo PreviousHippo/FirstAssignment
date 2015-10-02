@@ -26,6 +26,7 @@ public class SinglePlayerMode extends Activity {
     long startTime;
     long TimeDiff;
     long latency;
+    boolean ifClicked = Boolean.FALSE;
 
 
     @Override
@@ -54,6 +55,8 @@ public class SinglePlayerMode extends Activity {
                                 TimeDiff = System.currentTimeMillis() - startTime;
                                 if (TimeDiff >= (long) randomNum) {
                                     SinglePlayerMessage.setText("Press the Button");
+                                    ifClicked = Boolean.TRUE;
+
                                 }
                             }
                         });
@@ -65,15 +68,18 @@ public class SinglePlayerMode extends Activity {
                         TimeDiff = System.currentTimeMillis() - startTime;
                         if(TimeDiff < (long)randomNum){
                             SinglePlayerMessage.setText("You Press too early");
+                            ifClicked = Boolean.FALSE;
                         }
                         else{
                             latency = TimeDiff - randomNum;
                             latency = (long)(latency/1000.0);
                             //TimeList,getAllTime().add(latency);
                             SinglePlayerMessage.setText("Your latency is "+ latency+"s");
+                            ifClicked = Boolean.FALSE;
                         }
                     }
                 });
+                dialog.cancel();
             }
         });
         builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -87,21 +93,6 @@ public class SinglePlayerMode extends Activity {
         AlertDialog alert11 = builder1.create();
         alert11.show();
 
-        //SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
-        //SinglePlayerButton.setOnClickListener(new View.OnClickListener() {
-        //public void onClick(View view) {
-        //timer = new Timer();
-        //timerNum = timer
-        //if {
-        //   timer1 < randomNum
-        //}
-
-        //SinglePlayerMessage.setText(Message);
-
-
-
-
-    //});
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -49,10 +49,20 @@ public class SelectMode extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void SinglePlayerMode(View view){
-        Intent GotoSinglePlayerMode = new Intent(SelectMode.this, SinglePlayerMode.class);
-        startActivity(GotoSinglePlayerMode);
+    public void SinglePlayerMode(View view) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(SelectMode.this);
+        builder1.setMessage("are you ready?");
+        builder1.setCancelable(true);
+        builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int readyId) {
+                Intent GotoSinglePlayerMode = new Intent(SelectMode.this,SinglePlayerMode.class);
+                startActivity(GotoSinglePlayerMode);
+                dialog.cancel();
+            }
 
+        });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
     public void MultiPlayerMode(View view){
         Intent GotoMultiPlayerMode = new Intent(SelectMode.this, MultiPlayerMode.class);

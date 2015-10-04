@@ -4,11 +4,30 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
 
 public class StatMode extends Activity {
 
-    //private static final String FILENAME = "file.sav";
+    private static final String FILENAME = "file.sav";
 
+    private TextView Message;
+    private ArrayList Buzzers;
+    private ArrayList Times;
+    private ArrayList lastTenNum;
+    private ArrayList LastHund;
+    BuzzerList Buzzer = new BuzzerList(this);
+    TimeList TimeData = new TimeList(this);
+
+
+    /*public void startStat(){
+        //TimeList.loadFromFile();
+        Buzzer.loadFromFile();
+        //fillUpLatency();
+        //buzzerdata=BuzzerList.getBuzzers();
+       // bodyText= (TextView) findViewById(R.id.screen_text);*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

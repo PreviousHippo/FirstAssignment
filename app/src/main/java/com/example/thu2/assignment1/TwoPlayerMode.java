@@ -17,12 +17,12 @@ public class TwoPlayerMode extends Activity {
     Button FirstPlayerButton;
     Button SecondPlayerButton;
     private ArrayList BuzzerData;
-    BuzzerList myBuzzer = new BuzzerList();
+    BuzzerList myBuzzer = new BuzzerList(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.two_player_mode_activity);
-        //myBuzzer.loadFromFile();
+        myBuzzer.loadFromFile();
         BuzzerData = myBuzzer.getBuzzer();
         FirstPlayerButton = (Button) findViewById(R.id.PlayerOneButton);
         FirstPlayerButton.setOnClickListener(new View.OnClickListener() {
@@ -31,7 +31,7 @@ public class TwoPlayerMode extends Activity {
                 Integer Num = 21;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);
-                //myBuzzer.saveInFile();
+                myBuzzer.saveInFile();
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(TwoPlayerMode.this);
                 builder1.setMessage("First Player Won!!");
                 builder1.setCancelable(true);
@@ -51,7 +51,7 @@ public class TwoPlayerMode extends Activity {
                 Integer Num = 22;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);
-                //myBuzzer.saveInFile();
+                myBuzzer.saveInFile();
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(TwoPlayerMode.this);
                 builder2.setMessage("Second Player Won");
                 builder2.setCancelable(true);

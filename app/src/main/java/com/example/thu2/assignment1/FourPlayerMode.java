@@ -3,7 +3,6 @@ package com.example.thu2.assignment1;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,13 +17,13 @@ public class FourPlayerMode extends Activity {
     Button ThirdPlayerButton4;
     Button FourthPlayerButton4;
     private ArrayList BuzzerData;
-    BuzzerList myBuzzer = new BuzzerList();
+    BuzzerList myBuzzer = new BuzzerList(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.four_player_mode_activity);
-        //myBuzzer.loadFromFile();
+        myBuzzer.loadFromFile();
         BuzzerData = myBuzzer.getBuzzer();
         FirstPlayerButton4 = (Button) findViewById(R.id.PlayerOneButton);
         FirstPlayerButton4.setOnClickListener(new View.OnClickListener() {
@@ -33,7 +32,7 @@ public class FourPlayerMode extends Activity {
                 Integer Num = 41;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);
-                //myBuzzer.saveInFile();
+                myBuzzer.saveInFile();
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(FourPlayerMode.this);
                 builder2.setMessage("First Player Won");
                 builder2.setCancelable(true);
@@ -53,7 +52,7 @@ public class FourPlayerMode extends Activity {
                 Integer Num = 42;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);
-                //myBuzzer.saveInFile();
+                myBuzzer.saveInFile();
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(FourPlayerMode.this);
                 builder2.setMessage("Second Player Won");
                 builder2.setCancelable(true);
@@ -74,7 +73,7 @@ public class FourPlayerMode extends Activity {
                 Integer Num = 43;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);
-                //myBuzzer.saveInFile();
+                myBuzzer.saveInFile();
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(FourPlayerMode.this);
                 builder2.setMessage("Third Player Won");
                 builder2.setCancelable(true);
@@ -95,7 +94,7 @@ public class FourPlayerMode extends Activity {
                 Integer Num = 44;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);
-                //myBuzzer.saveInFile();
+                myBuzzer.saveInFile();
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(FourPlayerMode.this);
                 builder2.setMessage("Second Player Won");
                 builder2.setCancelable(true);

@@ -1,11 +1,13 @@
 package com.example.thu2.assignment1;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class StatMode extends ActionBarActivity {
+public class StatMode extends Activity {
+
+    //private static final String FILENAME = "file.sav";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

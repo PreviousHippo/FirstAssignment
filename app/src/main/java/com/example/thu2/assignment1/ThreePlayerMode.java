@@ -10,18 +10,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class ThreePlayerMode extends Activity {
     Button FirstPlayerButton3;
     Button SecondPlayerButton3;
     Button ThirdPlayerButton3;
+    private ArrayList BuzzerData;
+    BuzzerList myBuzzer = new BuzzerList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.three_player_mode_activity);
+        //myBuzzer.loadFromFile();
+        BuzzerData = myBuzzer.getBuzzer();
         FirstPlayerButton3 = (Button) findViewById(R.id.PlayerFirstButton);
         FirstPlayerButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Integer Num = 31;
+                BuzzerData.add(Num);
+                myBuzzer.setBuzzer(BuzzerData);
+                //myBuzzer.saveInFile();
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(ThreePlayerMode.this);
                 builder1.setMessage("First Player Won!!");
                 builder1.setCancelable(true);
@@ -38,6 +48,10 @@ public class ThreePlayerMode extends Activity {
         SecondPlayerButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Integer Num = 32;
+                BuzzerData.add(Num);
+                myBuzzer.setBuzzer(BuzzerData);
+                //myBuzzer.saveInFile();
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(ThreePlayerMode.this);
                 builder2.setMessage("Second Player Won");
                 builder2.setCancelable(true);
@@ -55,6 +69,10 @@ public class ThreePlayerMode extends Activity {
         ThirdPlayerButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Integer Num = 33;
+                BuzzerData.add(Num);
+                myBuzzer.setBuzzer(BuzzerData);
+                //myBuzzer.saveInFile();
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(ThreePlayerMode.this);
                 builder2.setMessage("Third Player Won");
                 builder2.setCancelable(true);

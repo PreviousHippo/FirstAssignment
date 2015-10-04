@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,8 +26,8 @@ public class SinglePlayerMode extends Activity {
     long TimeDiff;
     Double latency;
     //boolean ifClicked = Boolean.FALSE;
-    //ArrayList<Double> times = new ArrayList<Double>();
-    //TimeList myTimeList;
+    ArrayList<Double> times = new ArrayList<Double>();
+    TimeList myTimeList;
 
 
     @Override

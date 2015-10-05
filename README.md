@@ -44,5 +44,5 @@ http://stackoverflow.com/questions/4044726/how-to-set-a-timer-in-java
 Random Number between 10 to 2000:
 http://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
 
-Dicussed some problems which I had when I programming this app with Ji Yang and Baihong Qi
+Dicussed some problems which I had when I programming this app with Ji Yang
 

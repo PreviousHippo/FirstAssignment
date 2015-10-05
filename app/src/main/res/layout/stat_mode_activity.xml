@@ -16,4 +16,33 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:textSize="40dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Email"
+        android:id="@+id/EmailBotton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/StatsText"
+        android:onClick="SendEmail" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:id="@+id/ClearData"
+        android:layout_alignTop="@+id/EmailBotton"
+        android:layout_alignParentStart="true"
+        android:onClick="ClearData" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/StatDisplay"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/StatsText"
+        android:text="LargeText"
+        android:textSize="15dp" />
+
 </RelativeLayout>

@@ -19,74 +19,17 @@ import java.util.ArrayList;
  */
 public class BuzzerList  {
 
-    /*private final String FILENAME = "BuzzerData.sav";
-    private ArrayList Buzzer = new ArrayList<Long>();
-    private Context context;
-
-    public void setBuzzer(ArrayList Buzzer){
-        this.Buzzer = Buzzer;
-    }
-
-    public void BuzzerTimes(Context context){
-        this.context = context;
-    }
-
-    //public void addBuzzer(Integer Buzzer){
-    //   Buzzer.add(Buzzer);
-    //}
-
-    public void DeleteBuzzer(){
-        Buzzer.remove(Buzzer);
-    }
-
-    public ArrayList<Long>getBuzzer(){
-        return Buzzer;
-    }
-
-    public void saveInFile(){
-        try{
-            FileOutputStream fos = context.openFileOutput(FILENAME, 0);
-            OutputStreamWriter writer = new OutputStreamWriter(fos);
-            Gson gson = new Gson();
-            gson.toJson(Buzzer,writer);
-            writer.flush();
-            fos.close();
-        }catch (FileNotFoundException e){
-            throw new RuntimeException(e);
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }
-    public void loadFromFile(){
-        try {
-            FileInputStream fis = context.openFileInput(FILENAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<Integer>>() {
-            }.getType();
-            Buzzer = (gson.fromJson(in, listType));
-        }catch (FileNotFoundException e){
-            Buzzer = new ArrayList<Integer>();
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }*/
-
     private final String FILENAME="BuzzerData.sav";
+
     private ArrayList Buzzer=new ArrayList<Integer>();
     private Context context;
     public BuzzerList(Context context) {
         this.context=context;
     }
-
     public void setBuzzer(ArrayList Buzzer) {
         this.Buzzer = Buzzer;
     }
-
-    public void addBuzzer(Integer buzzer){
-        Buzzer.add(Buzzer);
-    }
-    public void clearBuzzers(){
+    public void clearBuzzer(){
         Buzzer.removeAll(Buzzer);
     }
     public ArrayList<Integer>getBuzzer(){

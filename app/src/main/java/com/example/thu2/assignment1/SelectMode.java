@@ -1,5 +1,6 @@
 package com.example.thu2.assignment1;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,22 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class SelectMode extends ActionBarActivity {
+public class SelectMode extends Activity {
 
-    Button SinglePlayerButton;
-    Button MultiPlayerButton;
-    Button StatAndUsageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selectmodelayout);
-        //SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
-        //SinglePlayerButton.setOnClickListener(new View.OnClickListener(){
-            //public void onClick(View view){
-        //   //do it tomorrow
-        //    }
-        //});
     }
 
     @Override

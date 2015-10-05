@@ -6,6 +6,7 @@ package com.example.thu2.assignment1;
 import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,51 +21,48 @@ import java.util.ArrayList;
  * Created by AndyHu on 2015-10-03.
  */
 public class TimeList extends Object {
-    private final String FILENAME ="TimeDate.sav";
-    private ArrayList TimeData= new ArrayList<Double>();
+    private final String FILENAME ="TimeData.sav";
+    private ArrayList TimeData = new ArrayList<Double>();
     private Context context;
 
-    public TimeList(Context context){
+    //private final String FILENAME = "LatencyData.sav";
+    //private ArrayList times=new ArrayList<Double>();
+    //private Context context;
+
+
+    public TimeList(Context context) {
         this.context=context;
     }
-
-    //public void addTime(Double time){
-    //time.add(time);
-    //}
-
-    public void setTime(ArrayList<Double> TimeData){
-        this.TimeData = TimeData;
+    public void setTime(Double time){
+        TimeData.add(time);
     }
-
     public ArrayList<Double> getAllTime(){
         return TimeData;
     }
-
-    public void clearTimeData(){
+    public void clearTimes(){
         TimeData.removeAll(TimeData);
     }
+    public ArrayList<Double> getLastTen() {
 
-    public ArrayList<Double> getLastTen(){
-        if(TimeData.size() <= 10){
+        if (TimeData.size() <= 10) {
             return TimeData;
-        }else{
-         ArrayList lastTen = new ArrayList<Double>();
-            for(int i =1;i<11;i++){
+        } else {
+            ArrayList lastTen = new ArrayList<Double>();
+            for (int i = 1; i < 11; i++) {
                 lastTen.add(TimeData.get(TimeData.size() - i));
             }
             return lastTen;
         }
     }
-
-    public ArrayList<Double> getLastHund(){
-        if(TimeData.size() <= 100){
+    public ArrayList<Double> getLastHundred() {
+        if (TimeData.size() <= 100) {
             return TimeData;
-        }else{
-            ArrayList lastHund = new ArrayList<Double>();
-            for(int i =1;i<11;i++){
-                lastHund.add(TimeData.get(TimeData.size() - i));
+        } else {
+            ArrayList lastHundred = new ArrayList<Double>();
+            for (int i = 1; i < 101; i++) {
+                lastHundred.add(TimeData.get(TimeData.size() - i));
             }
-            return lastHund;
+            return lastHundred;
         }
     }
 
@@ -82,20 +80,21 @@ public class TimeList extends Object {
             throw new RuntimeException(e);
         }
     }
-    public void loadFromFile(){
+   /* public void loadFromFile() {
         try {
             FileInputStream fis = context.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<Integer>>() {
-            }.getType();
-            TimeData = (gson.fromJson(in, listType));
-        }catch (FileNotFoundException e){
-            TimeData = new ArrayList<Integer>();
-        }catch (IOException e){
+            Gson gson =new Gson();
+            //Taken from https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html
+            Type listType = new TypeToken<ArrayList<Integer>>() {}.getType();
+            TimeData=(gson.fromJson(in, listType));
+        } catch (FileNotFoundException e) {
+            TimeData= new ArrayList<Double>();
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
+
+    }*/
 
 
 }

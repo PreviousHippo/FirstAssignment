@@ -30,7 +30,7 @@ public class BuzzerList  {
         this.Buzzer = Buzzer;
     }
     public void clearBuzzer(){
-        Buzzer.removeAll(Buzzer);
+        Buzzer.remove(Buzzer);
     }
     public ArrayList<Integer>getBuzzer(){
         return Buzzer;

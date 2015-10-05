@@ -38,9 +38,6 @@ public class SinglePlayerMode extends Activity {
 
     public void ClickSingleMode(View view){
         if(ClickStart == Boolean.FALSE){
-            //SinglePlayerMessage.setText("fck you sucker, please let me finish it");
-            //Button PressButton = (Button) findViewById(R.id.SinglePressButton);
-            //PressButton.setText("fuck");
             rand = new Random();
             randomNum = new Double(rand.nextInt(maxNum - minNum+1)+ minNum);
             timer = new Timer();
@@ -92,71 +89,6 @@ public class SinglePlayerMode extends Activity {
     }
 
 
-        /*SinglePlayerMessage = (TextView) findViewById(R.id.SinglePlayerModeText);
-        rand = new Random();
-        randomNum = rand.nextInt(maxNum - minNum+1)+ minNum;
-        timer = new Timer();
-        startTime = System.currentTimeMillis();
-
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        TimeDiff = System.currentTimeMillis() - startTime;
-                        if (TimeDiff >= randomNum){
-                            SinglePlayerMessage.setText("click");
-                        }
-                    }
-                });
-            }
-        },0,100);
-        final Button SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
-        SinglePlayerButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                TimeDiff = System.currentTimeMillis() - startTime;
-                timer.cancel();
-                if(TimeDiff < randomNum){
-                    SinglePlayerMessage.setText("early");
-                    Button SinglePlayerButton = (Button) findViewById(R.id.SinglePressButton);
-                    SinglePlayerButton.setText("start");
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(SinglePlayerMode.this);
-                    builder1.setMessage("Don't click too fast");
-                    builder1.setCancelable(true);
-                    builder1.setPositiveButton("restart", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int readyId) {
-                            Intent intent = getIntent();
-                            finish();
-                            startActivity(intent);
-                            dialog.cancel();
-                        }
-                    });
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }else {
-                    latency = TimeDiff - (double) randomNum;
-                    latency = latency /1000.0;
-                    myTimeRecord.setTime(latency);
-                    myTimeRecord.saveInFile();
-                    SinglePlayerMessage.setText("Your latency is " + Double.toString(latency) + "s");
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(SinglePlayerMode.this);
-                    builder1.setMessage("Do you want to play again?");
-                    builder1.setCancelable(true);
-                    builder1.setPositiveButton("restart", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int readyId) {
-                            Intent intent = getIntent();
-                            finish();
-                            startActivity(intent);
-                            dialog.cancel();
-                        }
-                    });
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
-            }
-        });
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -35,7 +35,7 @@ public class TimeRecord extends Object {
         return TimeData;
     }
     public void clearTimes(){
-        TimeData.removeAll(TimeData);
+        TimeData.remove(TimeData);
     }
     public ArrayList<Double> getLastTen() {
 

@@ -10,4 +10,5 @@
     <string name="title_activity_two_player_mode">TwoPlayerMode</string>
     <string name="title_activity_three_player_mode">ThreePlayerMode</string>
     <string name="title_activity_four_player_mode">FourPlayerMode</string>
+    <string name="compose_email">Compose Email</string>
 </resources>

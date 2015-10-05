@@ -39,11 +39,15 @@ public class StatMode extends Activity {
         +"Maximum of last ten record: " +String.format("%.5f",Max(LastTenNum))+ "s\n"
         +"Minimum of last hundred record: " +String.format("%.5f",Max(LastHundredNum))+ "s\n"
         +"Average: " +String.format("%.5f",Average(Times))+ "s\n"
-        +"Median: " +String.format("%.5f",Median(Times))+ "s\n"
+                +"Average of last ten record: " +String.format("%.5f",Average(LastTenNum))+ "s\n"
+                +"Average of last hundred record: " +String.format("%.5f",Average(LastHundredNum))+ "s\n"
+                +"Median: " +String.format("%.5f",Median(Times))+ "s\n"
+                +"Median of last ten record: " +String.format("%.5f",Median(LastTenNum))+ "s\n"
+                +"Median of last hundred record: " +String.format("%.5f",Median(LastHundredNum))+ "s\n"
         +"Buzzer Count: \n"
-        +"Two Player Mode: Player 1 won " + TwoPlayerFirst(Buzzer) +" times. Player 2 won " + TwoPlayerSecond(Buzzer) +" times.\n"
-        +"Three Player Mode: Player 1 won " + ThreePlayerFirst(Buzzer) +" times. Player 2 won " + ThreePlayerSecond(Buzzer) +" times. Player 3 won " + ThreePlayerThird(Buzzer) +" times\n"
-        +"Four Player Mode: Player 1 won " + FourPlayerFirst(Buzzer) + " times. Player 2 won "+ FourPlayerSecond(Buzzer) +" times. Player 3 won " + FourPlayerThird(Buzzer) +" times. Player 4 won " + FourPlayerFourth(Buzzer) +" times.\n" );
+        +"Two Player Mode: \nPlayer 1 won " + TwoPlayerFirst(Buzzer) +" times.\nPlayer 2 won " + TwoPlayerSecond(Buzzer) +" times.\n"
+        +"Three Player Mode: \nPlayer 1 won " + ThreePlayerFirst(Buzzer) +" times.\nPlayer 2 won " + ThreePlayerSecond(Buzzer) +" times. \nPlayer 3 won " + ThreePlayerThird(Buzzer) +" times\n"
+        +"Four Player Mode: \nPlayer 1 won " + FourPlayerFirst(Buzzer) + " times. \nPlayer 2 won "+ FourPlayerSecond(Buzzer) +" times. \nPlayer 3 won " + FourPlayerThird(Buzzer) +" times. \nPlayer 4 won " + FourPlayerFourth(Buzzer) +" times.\n" );
     }
 
     public Double Max(ArrayList list){

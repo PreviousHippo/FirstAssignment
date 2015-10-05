@@ -31,7 +31,7 @@ public class TimeRecord extends Object {
     public void setTime(Double time){
         TimeData.add(time);
     }
-    public ArrayList<Double> getAllTime(){
+    public ArrayList<Double> getTime(){
         return TimeData;
     }
     public void clearTimes(){

@@ -131,7 +131,7 @@ public class StatMode extends Activity {
     }
 
     public void UpdateLatencyData(){
-        Times = myTimeDataRecord.getAllTime();
+        Times = myTimeDataRecord.getTime();
         LastTenNum = myTimeDataRecord.getLastTen();
         LastHundredNum = myTimeDataRecord.getLastHundred();
     }

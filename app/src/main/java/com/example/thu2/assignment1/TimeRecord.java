@@ -20,17 +20,12 @@ import java.util.ArrayList;
 /**
  * Created by AndyHu on 2015-10-03.
  */
-public class TimeList extends Object {
+public class TimeRecord extends Object {
     private final String FILENAME ="TimeData.sav";
     private ArrayList TimeData = new ArrayList<Double>();
     private Context context;
 
-    //private final String FILENAME = "LatencyData.sav";
-    //private ArrayList times=new ArrayList<Double>();
-    //private Context context;
-
-
-    public TimeList(Context context) {
+    public TimeRecord(Context context) {
         this.context=context;
     }
     public void setTime(Double time){
@@ -66,27 +61,29 @@ public class TimeList extends Object {
         }
     }
 
-    public void saveInFile(){
-        try{
-            FileOutputStream fos = context.openFileOutput(FILENAME,0);
+    public void saveInFile() {
+        try {
+            FileOutputStream fos = context.openFileOutput(FILENAME,
+                    0);
             OutputStreamWriter writer = new OutputStreamWriter(fos);
             Gson gson = new Gson();
             gson.toJson(TimeData,writer);
             writer.flush();
             fos.close();
-        }catch (FileNotFoundException e){
-            throw new RuntimeException(e);
-        }catch (IOException e){
-            throw new RuntimeException(e);
+        } catch (FileNotFoundException e) {
+            throw new  RuntimeException(e);
+        } catch (IOException e) {
+            throw new  RuntimeException(e);
         }
     }
-   /* public void loadFromFile() {
+
+    public void loadFromFile() {
         try {
             FileInputStream fis = context.openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             Gson gson =new Gson();
             //Taken from https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html
-            Type listType = new TypeToken<ArrayList<Integer>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Double>>() {}.getType();
             TimeData=(gson.fromJson(in, listType));
         } catch (FileNotFoundException e) {
             TimeData= new ArrayList<Double>();
@@ -94,7 +91,7 @@ public class TimeList extends Object {
             throw new RuntimeException(e);
         }
 
-    }*/
+    }
 
 
 }

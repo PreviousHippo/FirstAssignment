@@ -16,31 +16,16 @@ import java.util.Arrays;
 public class StatMode extends Activity {
 
     private TextView Message;
-    private ArrayList Buzzer;
+    public ArrayList Buzzer;
     private ArrayList Times;
     private ArrayList LastTenNum;
-    private ArrayList LastHund;
+    private ArrayList LastHundredNum;
     BuzzerList myBuzzerData = new BuzzerList(this);
-    TimeList myTimeData = new TimeList(this);
-    final String FILENAME = "TimeData.sav";
+    TimeRecord myTimeDataRecord = new TimeRecord(this);
 
-
-
-    /*public void loadFromFile(){
-        try {
-            FileInputStream fis = openFileInput(FILENAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            Gson gson = new Gson();
-            myTimeData = gson.fromJson(in, myTimeData.getClass());
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }*/
 
     public void startStat() {
-        //myTimeData.loadFromFile();
+        myTimeDataRecord.loadFromFile();
         myBuzzerData.loadFromFile();
         Buzzer=myBuzzerData.getBuzzer();
         Message= (TextView) findViewById(R.id.StatDisplay);
@@ -50,9 +35,9 @@ public class StatMode extends Activity {
         +"Maximum of all time: " +String.format("%.5f",Max(Times))+ "s\n"
         +"Minimum of all time: " +String.format("%.5f",Min(Times))+ "s\n"
         +"Minimum of last ten record: " +String.format("%.5f",Min(LastTenNum))+ "s\n"
-        +"Minimum of last hundred record: " +String.format("%.5f",Min(LastHund))+ "s\n"
+        +"Minimum of last hundred record: " +String.format("%.5f",Min(LastHundredNum))+ "s\n"
         +"Maximum of last ten record: " +String.format("%.5f",Max(LastTenNum))+ "s\n"
-        +"Minimum of last hundred record: " +String.format("%.5f",Max(LastHund))+ "s\n"
+        +"Minimum of last hundred record: " +String.format("%.5f",Max(LastHundredNum))+ "s\n"
         +"Average: " +String.format("%.5f",Average(Times))+ "s\n"
         +"Median: " +String.format("%.5f",Median(Times))+ "s\n"
         +"Buzzer Count: \n"
@@ -134,17 +119,17 @@ public class StatMode extends Activity {
         }
     }
     public void ClearData(View view){
-        myTimeData.clearTimes();
-        myTimeData.saveInFile();
+        myTimeDataRecord.clearTimes();
+        myTimeDataRecord.saveInFile();
         myBuzzerData.clearBuzzer();
         myBuzzerData.saveInFile();
         startStat();
     }
 
     public void UpdateLatencyData(){
-        Times = myTimeData.getAllTime();
-        LastTenNum = myTimeData.getLastTen();
-        LastHund = myTimeData.getLastHundred();
+        Times = myTimeDataRecord.getAllTime();
+        LastTenNum = myTimeDataRecord.getLastTen();
+        LastHundredNum = myTimeDataRecord.getLastHundred();
     }
 
 
@@ -298,30 +283,29 @@ public class StatMode extends Activity {
 
 
 
+    //http://stackoverflow.com/questions/28546703/how-to-code-using-android-studio-to-send-an-email
     public void SendEmail(View view){
-        String[] TO = {"thu2@ualberta.ca"};
+        String[] TO = {""};
         String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mail to:"));
         emailIntent.setType("text/plain");
-
-
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT,"Your Subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT,Message.getText());
-        try{
-            startActivity(Intent.createChooser(emailIntent,"Send Email ..."));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, Message.getText());
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             finish();
         }catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(StatMode.this, "These is no emil client installed.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(StatMode.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stat_mode_activity);
-        //loadFromFile();
+        myTimeDataRecord.loadFromFile();
         startStat();
     }
 

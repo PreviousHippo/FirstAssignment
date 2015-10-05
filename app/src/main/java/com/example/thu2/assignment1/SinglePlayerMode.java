@@ -3,7 +3,6 @@ package com.example.thu2.assignment1;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,23 +19,85 @@ public class SinglePlayerMode extends Activity {
     Random rand;
     int maxNum = 2000;
     int minNum = 10;
-    int randomNum;
+    Double randomNum;
     Timer timer;
     long startTime;
     long TimeDiff;
     Double latency;
-    TimeList myTimeList = new TimeList(this);
+    TimeRecord myTimeRecord;
+    private Boolean ClickStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.single_player_mode_activity);
+        myTimeRecord = new TimeRecord(this);
         SinglePlayerMessage = (TextView) findViewById(R.id.SinglePlayerModeText);
+        ClickStart = Boolean.FALSE;
+    }
+
+    public void ClickSingleMode(View view){
+        if(ClickStart == Boolean.FALSE){
+            //SinglePlayerMessage.setText("fck you sucker, please let me finish it");
+            //Button PressButton = (Button) findViewById(R.id.SinglePressButton);
+            //PressButton.setText("fuck");
+            rand = new Random();
+            randomNum = new Double(rand.nextInt(maxNum - minNum+1)+ minNum);
+            timer = new Timer();
+            startTime = System.currentTimeMillis();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TimeDiff = System.currentTimeMillis() - startTime;
+                            if (TimeDiff >= randomNum){
+                                SinglePlayerMessage.setText("click");
+                                ClickStart = Boolean.TRUE;
+                            }
+                        }
+                    });
+                }
+            },0,100);
+            }else{
+            TimeDiff = System.currentTimeMillis() - startTime;
+            timer.cancel();
+            if(TimeDiff < randomNum){
+                SinglePlayerMessage.setText("Too early");
+                Button PressButton = (Button) findViewById(R.id.SinglePressButton);
+                PressButton.setText("Start");
+                ClickStart = Boolean.FALSE;
+            }else {
+                latency = TimeDiff - randomNum;
+                latency = latency / 1000.0;
+                myTimeRecord.setTime(latency);
+                myTimeRecord.saveInFile();
+                SinglePlayerMessage.setText("Your latency is " + Double.toString(latency) + "s");
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(SinglePlayerMode.this);
+                builder1.setMessage("want to restart?");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton("Start", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int readyId) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                Button PressButton = (Button) findViewById(R.id.SinglePressButton);
+                PressButton.setText("Restart");
+                ClickStart = Boolean.FALSE;
+            }
+        }
+    }
+
+
+        /*SinglePlayerMessage = (TextView) findViewById(R.id.SinglePlayerModeText);
         rand = new Random();
         randomNum = rand.nextInt(maxNum - minNum+1)+ minNum;
         timer = new Timer();
         startTime = System.currentTimeMillis();
-        myTimeList = new TimeList(this);
+
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -76,8 +137,8 @@ public class SinglePlayerMode extends Activity {
                 }else {
                     latency = TimeDiff - (double) randomNum;
                     latency = latency /1000.0;
-                    myTimeList.setTime(latency);
-                    myTimeList.saveInFile();
+                    myTimeRecord.setTime(latency);
+                    myTimeRecord.saveInFile();
                     SinglePlayerMessage.setText("Your latency is " + Double.toString(latency) + "s");
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(SinglePlayerMode.this);
                     builder1.setMessage("Do you want to play again?");
@@ -95,7 +156,7 @@ public class SinglePlayerMode extends Activity {
                 }
             }
         });
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

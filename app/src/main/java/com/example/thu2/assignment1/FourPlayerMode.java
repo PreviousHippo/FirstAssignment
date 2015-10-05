@@ -30,6 +30,8 @@ public class FourPlayerMode extends Activity {
         FirstPlayerButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //41 represents the first player in 4 players mode, 42,43 and 44 are
+                //similar ways to represents other players in this mode
                 Integer Num = 41;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);

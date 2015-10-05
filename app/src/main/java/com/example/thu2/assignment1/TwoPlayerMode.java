@@ -28,8 +28,8 @@ public class TwoPlayerMode extends Activity {
         FirstPlayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //21 represent 2 player mode and the first player, the 22,31,32,33,41,42,43,44
-                // are the similar way to represent those players in diff mode
+                //21 represent 2 player mode and the first player, the 22
+                //is the similar way to represent another player in this mode
                 //discussed this representative with Baihong Qi during the lab
                 Integer Num = 21;
                 BuzzerData.add(Num);

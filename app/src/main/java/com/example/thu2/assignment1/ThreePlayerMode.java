@@ -28,6 +28,8 @@ public class ThreePlayerMode extends Activity {
         FirstPlayerButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //31 represent 3 player mode and the first player, 32 and 33 are similar ways to [
+                //represent other players in this mode
                 Integer Num = 31;
                 BuzzerData.add(Num);
                 myBuzzer.setBuzzer(BuzzerData);

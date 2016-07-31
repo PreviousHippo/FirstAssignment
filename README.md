@@ -11,11 +11,7 @@ recording reaction time statistics recording buzzer press/buzzes statistics meas
 
 Licence thu2-reflex: add game for react and buzzer
 
-# License
-
-jyang7-TravelExpense: Help users track their cost
-
-Copyright (C) 2014 Ji Yang jyang7@ualberta.ca
+Copyright (C) 2014 Tianyu Hu thu2@ualberta.ca
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
